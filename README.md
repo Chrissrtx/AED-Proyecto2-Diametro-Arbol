@@ -4,6 +4,36 @@ Implementación en **C++17** del diámetro de un árbol no dirigido y no pondera
 
 Proyecto Final 2 de Algoritmos y Estructuras de Datos, tema 12.
 
+## Requisitos
+
+- Compilador de C++17: g++ 9 o superior, clang o MSVC.
+- CMake 3.16 o superior (opcional; también se puede compilar solo con g++).
+
+## Compilar y ejecutar
+
+Con CMake (desde la raíz del repositorio):
+
+```bash
+cd cpp
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+./build/diametro --input ../inputs/arbol_demo.txt --output ../outputs/animacion_diametro.json
+```
+
+Sin CMake, directamente con g++ (desde la raíz del repositorio):
+
+```bash
+g++ -std=c++17 -O2 -Icpp/include cpp/src/*.cpp -o diametro
+./diametro --input inputs/arbol_demo.txt --output outputs/animacion_diametro.json
+```
+
+En Windows el ejecutable se llama `diametro.exe`. La opción `--start k` permite elegir el nodo desde el que empieza el primer BFS (por defecto, 1). Al terminar, el programa imprime algo como:
+
+```text
+n=7 | extremos=[7,4] | diametro=5 aristas
+JSON generado: outputs/animacion_diametro.json
+```
+
 ## ¿Cómo se resuelve el diámetro de un árbol?
 
 El **diámetro** es el camino simple de mayor longitud entre dos nodos: un camino que no repite nodos. En este proyecto, cada arista vale una unidad, así que la longitud se mide contando aristas. No depende de cuál nodo dibujemos como raíz ni de la altura que tenga el dibujo del árbol.
