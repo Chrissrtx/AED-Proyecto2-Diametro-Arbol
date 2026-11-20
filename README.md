@@ -115,6 +115,18 @@ Primero se valida toda la entrada y el resultado. Se escribe un temporal exclusi
 
 La implementación se verificó localmente con 23 pruebas, que cubren los casos normales y borde, las entradas inválidas, la traza JSON completa, 75 árboles aleatorios y una cadena y una estrella de 10 000 nodos. Las pruebas y la configuración de CI se conservan localmente y están excluidas del seguimiento de Git. El repositorio distribuido contiene el código necesario para generar los JSON, las entradas de ejemplo y la documentación.
 
+## Casos de ejemplo
+
+En `inputs/` hay cinco entradas para probar el programa:
+
+| Archivo | Descripción | Diámetro |
+|---|---|---|
+| `arbol_demo.txt` | Árbol de 7 nodos usado en la animación | 5 |
+| `un_nodo.txt` | Caso borde: un solo nodo | 0 |
+| `dos_nodos.txt` | Caso borde: una sola arista | 1 |
+| `cadena.txt` | Árbol camino de 5 nodos | 4 |
+| `estrella.txt` | Estrella de 4 nodos | 2 |
+
 ## Archivos
 
 ```text
