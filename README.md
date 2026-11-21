@@ -34,6 +34,25 @@ n=7 | extremos=[7,4] | diametro=5 aristas
 JSON generado: outputs/animacion_diametro.json
 ```
 
+## Generar el video
+
+La animación está hecha con [Manim Community](https://docs.manim.community/) y lee los JSON que genera el programa en C++ (`outputs/`): no recalcula nada, solo reproduce los eventos reales del algoritmo.
+
+Requisitos: Python 3 y Manim (`pip install manim`). Manim también necesita FFmpeg, Cairo y Pango; la guía oficial de instalación está en <https://docs.manim.community/en/stable/installation.html>.
+
+Desde la raíz del repositorio:
+
+```bash
+python animation/manim_diametro.py --scene VideoCompleto --quality k
+```
+
+- `--scene`: `DiametroArbol` (árbol de 7 nodos), `CasoBorde` (árbol de un nodo) o `VideoCompleto` (ambas, en un solo video).
+- `--quality`: `l` (480p), `m` (720p), `h` (1080p), `p` (1440p) o `k` (4K).
+- `--json` y `--edge-json`: rutas de otros JSON, si no se quieren usar los de `outputs/`.
+- `--speed`: multiplicador de velocidad; `--preview` abre el video al terminar.
+
+El video se guarda en `media/videos/manim_diametro/` dentro de la carpeta de la calidad elegida (por ejemplo `2160p60/VideoCompleto.mp4`).
+
 ## ¿Cómo se resuelve el diámetro de un árbol?
 
 El **diámetro** es el camino simple de mayor longitud entre dos nodos: un camino que no repite nodos. En este proyecto, cada arista vale una unidad, así que la longitud se mide contando aristas. No depende de cuál nodo dibujemos como raíz ni de la altura que tenga el dibujo del árbol.
@@ -134,4 +153,5 @@ cpp/include/    Arreglos, cola, árbol, eventos y resultados
 cpp/src/        Lectura, validación, BFS, diámetro, JSON y CLI
 inputs/         Árbol demo, un nodo, dos nodos, cadena y estrella
 outputs/        JSON completos generados por C++ para animación
+animation/      Escenas de Manim que convierten el JSON en video
 ```
